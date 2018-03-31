@@ -65,23 +65,32 @@ const getWeather = cords => {
 };
 
 const fn = async () => {
-    const location = await getLocation();
-    const weather = await getWeather(location);
-    const app = document.getElementById("app");
+    const preloader = document.getElementById("preloader");
+    try {
+        const location = await getLocation();
+        const weather = await getWeather(location);
+        const app = document.getElementById("app");
 
-    const locationInfo = document.createElement("location-info");
-    locationInfo.data = weather;
+        const locationInfo = document.createElement("location-info");
+        locationInfo.data = weather;
 
-    const tempHolder = document.createElement("temp-holder");
-    tempHolder.isCelsius = true;
-    tempHolder.temp = weather.temp;
+        const tempHolder = document.createElement("temp-holder");
+        tempHolder.isCelsius = true;
+        tempHolder.temp = weather.temp;
 
-    const weatherIcon = document.createElement("weather-icon");
-    weatherIcon.weather = weather.description;
+        const weatherIcon = document.createElement("weather-icon");
+        weatherIcon.weather = weather.description;
 
-    app.appendChild(locationInfo);
-    app.appendChild(tempHolder);
-    app.appendChild(weatherIcon);
+        preloader.remove();
+        app.appendChild(locationInfo);
+        app.appendChild(tempHolder);
+        app.appendChild(weatherIcon);
+    } catch (e) {
+        preloader.innerHTML =
+            "Something went wrong! Probably we were not able to get your location!<br/>" +
+            "There is a message in your console.";
+        console.log(e);
+    }
 };
 
 document.addEventListener("DOMContentLoaded", fn(), false);
