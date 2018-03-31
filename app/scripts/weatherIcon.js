@@ -22,7 +22,7 @@ class WeatherIcon extends HTMLElement {
 
     setupElements() {
         const icon = document.createElement("img");
-        icon.src = `/public/img/${this.getAttribute(
+        icon.src = `public/img/${this.getAttribute(
             "weather"
         ).toLowerCase()}.png`;
         icon.style = "-webkit-filter: invert(1);filter: invert(1);";
