@@ -10,10 +10,6 @@ const getLocation = () => {
     };
     if (navigator.geolocation) {
         return new Promise((resolve, reject) => {
-            resolve({
-                lat: "52.52000659999999",
-                lon: "13.404953999999975"
-            });
             navigator.geolocation.getCurrentPosition(
                 position => {
                     resolve({
