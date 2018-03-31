@@ -1,6 +1,6 @@
 # Weather App to play with web componenets
 
-[https://eduardmaghakyan.github.io/weather-app/](Demo)
+[Demo](https://eduardmaghakyan.github.io/weather-app/)
 
 ## Available Scripts
 
